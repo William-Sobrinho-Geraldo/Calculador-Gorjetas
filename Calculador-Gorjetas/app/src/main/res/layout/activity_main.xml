@@ -10,8 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <!--
         <androidx.appcompat.widget.Toolbar
@@ -26,14 +25,14 @@
 -->
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar"/>
+            layout="@layout/toolbar" />
 
         <ImageView
             android:id="@+id/icon_cost_of_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
             android:layout_marginHorizontal="16dp"
+            android:importantForAccessibility="no"
             app:layout_constraintBottom_toBottomOf="@id/cost_of_service"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cost_of_service"
@@ -44,8 +43,8 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:hint="@string/cost_of_service"
             android:layout_marginTop="16dp"
+            android:hint="@string/cost_of_service"
             app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
@@ -61,8 +60,8 @@
             android:id="@+id/icon_service_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
             android:layout_marginStart="16dp"
+            android:importantForAccessibility="no"
             app:layout_constraintBottom_toBottomOf="@id/service_question"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/service_question"
@@ -71,6 +70,7 @@
         <TextView
             android:id="@+id/service_question"
             style="@style/Widget.TipTime.TextView"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -78,41 +78,13 @@
             app:layout_constraintStart_toStartOf="@id/cost_of_service"
             app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
-        <RadioGroup
-            android:id="@+id/tip_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@id/option_twenty_percent"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="@id/service_question"
-            app:layout_constraintTop_toBottomOf="@id/service_question">
-
-            <RadioButton
-                android:id="@+id/option_twenty_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/amazing_service" />
-
-            <RadioButton
-                android:id="@+id/option_eighteen_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/good_service" />
-
-            <RadioButton
-                android:id="@+id/option_fifteen_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ok_service" />
-
-        </RadioGroup>
 
         <ImageView
             android:id="@+id/icon_round_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
             android:layout_marginStart="16dp"
+            android:importantForAccessibility="no"
             app:layout_constraintBottom_toBottomOf="@id/round_up_switch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/round_up_switch"
@@ -122,20 +94,22 @@
             android:id="@+id/round_up_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="40dp"
+            android:checked="true"
             android:text="@string/round_up_tip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tip_options"
-            app:layout_constraintTop_toBottomOf="@id/tip_options" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/service_question"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar_percentage" />
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/calculate"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/calculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
@@ -145,10 +119,52 @@
             style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calculate_button"
             tools:text="Valor da gorjeta: $10" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:max="100"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/service_question" />
+
+        <TextView
+            android:id="@+id/seekBar_percentage"
+            style="Widget.TipTime.TextView.noDimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="0"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/seekBar"
+            app:layout_constraintStart_toStartOf="@+id/seekBar"
+            app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+        <TextView
+            style="Widget.TipTime.TextView.noDimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="%"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/seekBar_percentage"
+            app:layout_constraintTop_toTopOf="@id/seekBar_percentage"
+
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

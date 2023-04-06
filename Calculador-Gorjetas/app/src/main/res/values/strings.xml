@@ -5,7 +5,7 @@
 
     <string name="cost_of_service">Valor total da conta</string>
 
-    <string name="how_was_the_service">Como foi o serviço??</string>
+    <string name="how_was_the_service">Escolha a porcentagem da gorjeta</string>
 
     <string name="amazing_service">Incrível (20%)</string>
 
@@ -13,7 +13,7 @@
 
     <string name="ok_service">OK (15%)</string>
 
-    <string name="round_up_tip">Arredondar gorjeta? SIM OU NÃO?</string>
+    <string name="round_up_tip">Arredondar gorjeta?</string>
 
     <string name="calculate">Calcular</string>
 

@@ -3,9 +3,12 @@ package com.example.CalculadorGorjeta
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import com.example.CalculadorGorjeta.databinding.ActivityMainBinding
@@ -19,6 +22,10 @@ import kotlin.math.roundToInt
  *  ===============================================================================================
  */
 class MainActivity : AppCompatActivity() {
+
+    private val TAG = "Testes de log"
+    private lateinit var seekbar : SeekBar
+    private lateinit var seekBarPercentage : TextView
 
     // Criando binding para facilitar a identificação das views
     private lateinit var binding: ActivityMainBinding
@@ -34,12 +41,26 @@ class MainActivity : AppCompatActivity() {
         //Criando nossa própria toolbar
         toolbar = findViewById(R.id.toolbars)
         setSupportActionBar(toolbar)
-
         toolbar.setTitleTextColor(Color.WHITE)
 
+        // Sincronizando a seekBar
+        seekbar = binding.seekBar
+        seekBarPercentage = binding.seekBarPercentage
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                seekBarPercentage.text = progress.toString()
+                Log.i(TAG, "a porcentagem atual é ${seekBarPercentage.text}")
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {  }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                seekBarPercentage.let {
+                    seekBarPercentage.text = seekBar?.progress.toString()
+                }
+            }
+        })
 
         // chamando a função calculateTip ao clicar no botão calculateButon
-        binding.calculateButton.setOnClickListener { calculateTip() }
+        binding.calculateButton.setOnClickListener { calculateTip(percentage = seekBarPercentage.text.toString().toDouble() )}
 
         // Escondendo o teclado ao pressionar a tecla ENTER do teclado
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
@@ -53,10 +74,11 @@ class MainActivity : AppCompatActivity() {
     /** ================================
         FUNÇÃO PARA CALCULAR A GORJETA
         ================================ */
-    private fun calculateTip() {
+    private fun calculateTip( percentage : Double = 0.0 ) {
         // Recebendo o valor do EditText
-        val stringInTextField = binding.costOfServiceEditText.text.toString()
+        val stringInTextField = binding.costOfServiceEditText.text.toString() //valor da conta
         val cost = stringInTextField.toDoubleOrNull()
+
 
         // Validando se o custo é nulo ou zero.
         if (cost == null || cost == 0.0) {
@@ -65,11 +87,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Recebendo a porcentagem de acordo com o que foi escolhido no RadioButton
-        val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
-            R.id.option_twenty_percent -> 0.20
-            R.id.option_eighteen_percent -> 0.18
-            else -> 0.15
-        }
+        val tipPercentage = percentage / 100
+//            when (binding.tipOptions.checkedRadioButtonId) {
+//            R.id.option_twenty_percent -> 0.20
+//            R.id.option_eighteen_percent -> 0.18
+//            else -> 0.15
+//        }
 
         // Calculando a gorjeta
         var tip = tipPercentage * cost
@@ -95,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 
+
     /**==========================================================
      * FUNÇÃO para esconder o teclado ao pressionar a tecla ENTER.
        ==========================================================*/
@@ -104,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             //Chamando a função de cálculo ao pressionar ENTER no teclado
-            calculateTip()
+            calculateTip(percentage = seekBarPercentage.text.toString().toDouble())
             return true
         }
         return false
