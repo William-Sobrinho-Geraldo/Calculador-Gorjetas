@@ -12,17 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/green_dark"
-            />
--->
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
@@ -78,6 +67,47 @@
             app:layout_constraintStart_toStartOf="@id/cost_of_service"
             app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:scaleY="1.1"
+            android:progress="5"
+            android:max="100"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/service_question" />
+
+        <TextView
+            android:id="@+id/seekBar_percentage"
+            style="Widget.TipTime.TextView.noDimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="5"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/seekBar"
+            app:layout_constraintStart_toStartOf="@+id/seekBar"
+            app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+        <TextView
+            style="Widget.TipTime.TextView.noDimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="%"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/seekBar_percentage"
+            app:layout_constraintTop_toTopOf="@id/seekBar_percentage"
+
+            />
 
         <ImageView
             android:id="@+id/icon_round_up"
@@ -96,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="40dp"
-            android:checked="true"
+            android:checked="false"
             android:text="@string/round_up_tip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -109,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="16sp"
             android:text="@string/calculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,52 +150,12 @@
             style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@+id/calculate_button"
             app:layout_constraintTop_toBottomOf="@id/calculate_button"
             tools:text="Valor da gorjeta: $10" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="16dp"
-            android:max="100"
-            android:min="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/service_question" />
-
-        <TextView
-            android:id="@+id/seekBar_percentage"
-            style="Widget.TipTime.TextView.noDimensions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="0"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/seekBar"
-            app:layout_constraintStart_toStartOf="@+id/seekBar"
-            app:layout_constraintTop_toBottomOf="@id/seekBar" />
-
-        <TextView
-            style="Widget.TipTime.TextView.noDimensions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:text="%"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/seekBar_percentage"
-            app:layout_constraintTop_toTopOf="@id/seekBar_percentage"
-
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

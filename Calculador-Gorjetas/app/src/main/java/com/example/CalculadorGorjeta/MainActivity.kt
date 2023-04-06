@@ -79,22 +79,14 @@ class MainActivity : AppCompatActivity() {
         val stringInTextField = binding.costOfServiceEditText.text.toString() //valor da conta
         val cost = stringInTextField.toDoubleOrNull()
 
-
         // Validando se o custo é nulo ou zero.
         if (cost == null || cost == 0.0) {
             displayTip(0.0)
             return
         }
 
-        // Recebendo a porcentagem de acordo com o que foi escolhido no RadioButton
-        val tipPercentage = percentage / 100
-//            when (binding.tipOptions.checkedRadioButtonId) {
-//            R.id.option_twenty_percent -> 0.20
-//            R.id.option_eighteen_percent -> 0.18
-//            else -> 0.15
-//        }
-
         // Calculando a gorjeta
+        val tipPercentage = percentage / 100
         var tip = tipPercentage * cost
 
         //Verificando se o botão de arredondar foi selecionado
