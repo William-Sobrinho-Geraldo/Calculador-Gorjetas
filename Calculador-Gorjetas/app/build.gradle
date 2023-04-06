@@ -5,7 +5,7 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        applicationId "com.example.tiptime"
+        applicationId "com.example.CalculadorGorjeta"
         minSdkVersion 19
         targetSdkVersion 32
         versionCode 1
