@@ -20,8 +20,6 @@ import kotlin.math.roundToInt
  */
 class MainActivity : AppCompatActivity() {
 
-
-
     // Criando binding para facilitar a identificação das views
     private lateinit var binding: ActivityMainBinding
     private lateinit var toolbar : androidx.appcompat.widget.Toolbar
@@ -52,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * FUNÇÃO PARA CALCULAR A GORJETA
-     */
+    /** ================================
+        FUNÇÃO PARA CALCULAR A GORJETA
+        ================================ */
     private fun calculateTip() {
         // Recebendo o valor do EditText
         val stringInTextField = binding.costOfServiceEditText.text.toString()
@@ -87,9 +85,9 @@ class MainActivity : AppCompatActivity() {
         displayTip(tip)
     }
 
-    /**
+    /**==================================================
     FUNÇÃO para formatar e mostrar o resultado da gorjeta
-     */
+     ====================================================*/
     private fun displayTip(tip: Double) {
         //Formatando a string para mostrar o valor em Reais.
         val locale: Locale = Locale("pt", "BR")
@@ -97,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 
-    /**
+    /**==========================================================
      * FUNÇÃO para esconder o teclado ao pressionar a tecla ENTER.
-     */
+       ==========================================================*/
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             val inputMethodManager =

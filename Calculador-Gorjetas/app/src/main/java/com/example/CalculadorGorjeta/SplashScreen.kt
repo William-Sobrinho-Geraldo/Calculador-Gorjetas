@@ -17,6 +17,9 @@ class SplashScreen : AppCompatActivity() {
         },1500)
     }
 
+    /** ==================================
+        FUNÇÃO Para ir para a MainActivity
+        ==================================*/
     private fun mostrarMainActiity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
