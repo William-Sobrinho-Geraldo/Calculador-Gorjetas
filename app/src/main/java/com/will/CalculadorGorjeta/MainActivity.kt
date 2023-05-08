@@ -1,4 +1,4 @@
-package com.example.CalculadorGorjeta
+package com.will.CalculadorGorjeta
 
 import android.content.Context
 import android.graphics.Color
@@ -9,27 +9,27 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.SeekBar
 import android.widget.TextView
-import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import com.example.CalculadorGorjeta.databinding.ActivityMainBinding
+import com.will.CalculadorGorjeta.databinding.ActivityMainBinding
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
 
 /**
  *  ===============================================================================================
- * Atividade principal do APP, ela gerencia todas as funções de cálulo e arredondamento da gorjeta.
+ * Activity principal do APP, ela gerencia todas as funções de cálulo e arredondamento da gorjeta.
  *  ===============================================================================================
  */
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "Testes de log"
-    private lateinit var seekbar : SeekBar
-    private lateinit var seekBarPercentage : TextView
+    private lateinit var seekbar: SeekBar
+    private lateinit var seekBarPercentage: TextView
 
     // Criando binding para facilitar a identificação das views
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toolbar : androidx.appcompat.widget.Toolbar
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
     //
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +46,13 @@ class MainActivity : AppCompatActivity() {
         // Sincronizando a seekBar
         seekbar = binding.seekBar
         seekBarPercentage = binding.seekBarPercentage
-        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 seekBarPercentage.text = progress.toString()
                 Log.i(TAG, "a porcentagem atual é ${seekBarPercentage.text}")
             }
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {  }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 seekBarPercentage.let {
                     seekBarPercentage.text = seekBar?.progress.toString()
@@ -60,7 +61,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         // chamando a função calculateTip ao clicar no botão calculateButon
-        binding.calculateButton.setOnClickListener { calculateTip(percentage = seekBarPercentage.text.toString().toDouble() )}
+        binding.calculateButton.setOnClickListener {
+            calculateTip(
+                percentage = seekBarPercentage.text.toString().toDouble()
+            )
+        }
 
         // Escondendo o teclado ao pressionar a tecla ENTER do teclado
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
@@ -72,9 +77,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** ================================
-        FUNÇÃO PARA CALCULAR A GORJETA
-        ================================ */
-    private fun calculateTip( percentage : Double = 0.0 ) {
+    FUNÇÃO PARA CALCULAR A GORJETA
+    ================================ */
+    private fun calculateTip(percentage: Double = 0.0) {
         // Recebendo o valor do EditText
         val stringInTextField = binding.costOfServiceEditText.text.toString() //valor da conta
         val cost = stringInTextField.toDoubleOrNull()
@@ -102,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
     /**==================================================
     FUNÇÃO para formatar e mostrar o resultado da gorjeta
-     ====================================================*/
+    ====================================================*/
     private fun displayTip(tip: Double) {
         //Formatando a string para mostrar o valor em Reais.
         val locale: Locale = Locale("pt", "BR")
@@ -113,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
     /**==========================================================
      * FUNÇÃO para esconder o teclado ao pressionar a tecla ENTER.
-       ==========================================================*/
+    ==========================================================*/
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             val inputMethodManager =

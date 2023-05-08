@@ -1,10 +1,9 @@
-package com.example.CalculadorGorjeta
+package com.will.CalculadorGorjeta
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,12 +13,12 @@ class SplashScreen : AppCompatActivity() {
 
         var handler: Boolean = Handler().postDelayed({
             mostrarMainActiity()
-        },1500)
+        }, 1500)
     }
 
     /** ==================================
-        FUNÇÃO Para ir para a MainActivity
-        ==================================*/
+    FUNÇÃO Para ir para a MainActivity
+    ==================================*/
     private fun mostrarMainActiity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
