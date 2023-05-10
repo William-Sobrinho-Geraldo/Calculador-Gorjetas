@@ -44,7 +44,17 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setTitleTextColor(Color.WHITE)
 
-        // Sincronizando a seekBar
+        // Sincronizando as setas com a seekbar
+        val setaEsquerda = binding.setaEsquerda
+        setaEsquerda.setOnClickListener {
+            diminuirNumero()
+        }
+        val setaDireita = binding.setaDireita
+        setaDireita.setOnClickListener {
+            aumentarNumero()
+        }
+
+        // Sincronizando o texto da porcentagem com a seekBar
         seekbar = binding.seekBar
         seekBarPercentage = binding.seekBarPercentage
         seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -62,7 +72,6 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-
         // Escondendo o teclado ao pressionar a tecla ENTER do teclado
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
             handleKeyEvent(
@@ -75,8 +84,9 @@ class MainActivity : AppCompatActivity() {
         binding.calculateButton.setOnClickListener {
             calculateTip(percentage = seekBarPercentage.text.toString().toDouble())
             //Escondendo o teclado ao clicar em calcular
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(binding.calculateButton.windowToken,0)
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(binding.calculateButton.windowToken, 0)
         }
 
     }
@@ -134,5 +144,24 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+    /**==========================================================
+     * FUNÇÕES para diminuir e aumentar o número da seekbar.
+    ==========================================================*/
+    private fun diminuirNumero(){
+        val numeroText : String = binding.seekBarPercentage.text.toString()
+        var numeroInt : Int = numeroText.toInt()
+        numeroInt--
+
+        seekBarPercentage.text = numeroInt.toString()
+        seekbar.progress = numeroInt
+    }
+    private fun aumentarNumero(){
+        val numeroText : String = binding.seekBarPercentage.text.toString()
+        var numeroInt : Int = numeroText.toInt()
+        numeroInt++
+
+        seekBarPercentage.text = numeroInt.toString()
+        seekbar.progress = numeroInt
     }
 }
