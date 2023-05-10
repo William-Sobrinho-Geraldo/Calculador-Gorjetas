@@ -1,8 +1,10 @@
 package com.will.CalculadorGorjeta
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
 class SplashScreen : AppCompatActivity() {
@@ -10,10 +12,14 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        val imageSplashScreen = findViewById<ImageView>(R.id.image_splash_screen)
+        val fadeInAnimation = ObjectAnimator.ofFloat(imageSplashScreen, "alpha",0f,1f)
+        fadeInAnimation.duration = 1600
+        fadeInAnimation.start()
 
-        var handler: Boolean = Handler().postDelayed({
+        Handler().postDelayed({
             mostrarMainActiity()
-        }, 1500)
+        }, 2000)
     }
 
     /** ==================================

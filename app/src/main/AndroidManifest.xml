@@ -12,10 +12,13 @@
 
         <activity
             android:name=".MainActivity"
+
             >
         </activity>
         <activity android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

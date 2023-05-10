@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.CalculadorGorjeta" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
+    <!-- Thema Base do Alicativo. -->
+    <style name="Theme.CalculadorGorjeta" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Cores Primárias. -->
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryVariant">@color/green_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+        <!-- Cores Secundárias. -->
         <item name="colorSecondary">@color/blue</item>
         <item name="colorSecondaryVariant">@color/blue_dark</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <!-- Cor da statusBar. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- For text input fields -->
+        <!-- Outras definições -->
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
-        <!-- For radio buttons -->
         <item name="radioButtonStyle">@style/Widget.TipTime.CompoundButton.RadioButton</item>
-        <!-- For switches -->
         <item name="switchStyle">@style/Widget.TipTime.CompoundButton.Switch</item>
     </style>
+
+        <style name="ImageButton_Setas">
+            <item name="android:tint">@color/black</item>
+        </style>
 </resources>

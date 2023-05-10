@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Widget.TipTime.TextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">64dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
-    <style name="Widget.TipTime.TextView.noDimensions" parent="Widget.MaterialComponents.TextView">
+
+
+    <style name="Widget.TipTime.TextView.noDimensions" parent="Widget.TipTime.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
@@ -22,4 +25,20 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
+
+<!--    <style name="ImageButton_Setas">-->
+<!--        <item name="android:tint">@color/black</item>-->
+<!--    </style>-->
+
+<!--    <style name="ImageButton_Setas">-->
+<!--        <item name="android:tint">@color/white</item>-->
+<!--    </style>-->
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+
 </resources>

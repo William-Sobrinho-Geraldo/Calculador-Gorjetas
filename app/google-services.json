@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482697447072",
+    "project_id": "calculador-de-gorjeta",
+    "storage_bucket": "calculador-de-gorjeta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482697447072:android:8a21ea9e7ad1fd7339ebc5",
+        "android_client_info": {
+          "package_name": "com.will.CalculadorGorjeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482697447072-7qbqkintpi0efmqkt0678vsd7giio69v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAutR-vgi1rvie7svTPS9GXBc4plD2AhAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482697447072-7qbqkintpi0efmqkt0678vsd7giio69v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,9 +10,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.will.CalculadorGorjeta.databinding.ActivityMainBinding
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.roundToInt
 
 /**
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Criando nossa própria toolbar
-        toolbar = findViewById(R.id.toolbars)
+        toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setTitleTextColor(Color.WHITE)
 
@@ -60,12 +61,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // chamando a função calculateTip ao clicar no botão calculateButon
-        binding.calculateButton.setOnClickListener {
-            calculateTip(
-                percentage = seekBarPercentage.text.toString().toDouble()
-            )
-        }
+
 
         // Escondendo o teclado ao pressionar a tecla ENTER do teclado
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
@@ -74,6 +70,15 @@ class MainActivity : AppCompatActivity() {
                 keyCode
             )
         }
+
+        // chamando a função calculateTip ao clicar no botão calculateButon
+        binding.calculateButton.setOnClickListener {
+            calculateTip(percentage = seekBarPercentage.text.toString().toDouble())
+            //Escondendo o teclado ao clicar em calcular
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(binding.calculateButton.windowToken,0)
+        }
+
     }
 
     /** ================================
