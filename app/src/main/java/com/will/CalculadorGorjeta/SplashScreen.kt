@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,7 @@ class SplashScreen : AppCompatActivity() {
         val imageSplashScreen = findViewById<ImageView>(R.id.image_splash_screen)
         val textCalculador = findViewById<TextView>(R.id.text_Calculador)
         val textCalculador2 = findViewById<TextView>(R.id.text_Calculador_2)
-        val duration : Long = 1600
+        val duration : Long = 1100
 
         val fadeInAnimation = ObjectAnimator.ofFloat(imageSplashScreen, "alpha",0f,1f)
         fadeInAnimation.duration = duration
@@ -30,7 +31,8 @@ class SplashScreen : AppCompatActivity() {
         fadeInAnimationText2.duration = duration
         fadeInAnimationText2.start()
 
-        Handler().postDelayed({
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
             mostrarMainActiity()
         }, 2000)
     }
