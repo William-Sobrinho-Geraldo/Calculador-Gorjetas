@@ -1,4 +1,4 @@
-package com.will.CalculadorGorjeta
+package com.will.CalculadorGorjeta.view
 
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Looper
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.will.CalculadorGorjeta.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +34,14 @@ class SplashScreen : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            mostrarMainActiity()
+            mostrarMainActivity()
         }, 2000)
     }
 
     /** ==================================
     FUNÇÃO Para ir para a MainActivity
     ==================================*/
-    private fun mostrarMainActiity() {
+    private fun mostrarMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()

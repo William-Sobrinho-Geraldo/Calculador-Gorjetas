@@ -3,19 +3,13 @@
 <resources>
     <string name="app_name">Calculador de gorjetas</string>
 
-    <string name="cost_of_service">Valor total da conta</string>
+    <string name="valor_da_conta">Valor total da conta</string>
 
-    <string name="how_was_the_service">Escolha a porcentagem da gorjeta</string>
+    <string name="porcentagem_da_gorjeta">Escolha a porcentagem da gorjeta</string>
 
-    <string name="amazing_service">Incrível (20%)</string>
+    <string name="arredondar">Arredondar gorjeta?</string>
 
-    <string name="good_service">Bom (18%)</string>
+    <string name="calcular">Calcular</string>
 
-    <string name="ok_service">OK (15%)</string>
-
-    <string name="round_up_tip">Arredondar gorjeta?</string>
-
-    <string name="calculate">Calcular</string>
-
-    <string name="tip_amount">Valor da gorjeta: %1$s</string>
+    <string name="apresentar_gorjeta">Valor da gorjeta: %1$s</string>
 </resources>

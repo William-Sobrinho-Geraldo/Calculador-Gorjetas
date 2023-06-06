@@ -11,14 +11,13 @@
         android:theme="@style/Theme.CalculadorGorjeta">
 
         <activity
-            android:name=".MainActivity"
-
+            android:name=".view.MainActivity"
             >
         </activity>
-        <activity android:name=".SplashScreen"
+        <activity android:name=".view.SplashScreen"
             android:exported="true"
-
             >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
